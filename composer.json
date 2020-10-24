@@ -1,0 +1,21 @@
+{
+    "name": "raheelshan/cruest",
+    "description": "This package generates controller, model, form request with permission and routes in web.php and api.php",
+    "type": "metapackage",
+    "require": {
+        "silber/bouncer": "^0.1.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Raheel Shan",
+            "email": "m.raheel.shan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Raheelshan\\Cruest\\": "src/"
+        }
+    }    
+}

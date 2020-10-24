@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+use App\Support\Database\CacheQueryBuilder;
+
+class BaseModel extends Model
+{
+	use CacheQueryBuilder;
+}

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\NAME_PLACEHOLDER;
 
-use App\Models\Category;
+use App\Models\NAME_PLACEHOLDER;
 use App\Http\Requests\BaseRequest;
 use Bouncer;
 
-class GetAllCategoriesRequest extends BaseRequest
+class GetAllNAMES_PLACEHOLDERRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class GetAllCategoriesRequest extends BaseRequest
      */
     public function authorize()
     {
-        return Bouncer::can('view-categories');
+        return Bouncer::can('view-MODELS');
     }
 
     /**
@@ -26,11 +26,13 @@ class GetAllCategoriesRequest extends BaseRequest
     public function rules()
     {
         return [
-          //'store_id' => ['required', 'integer'],
+
         ];
     }
 
     public function handle(){
-        return Category::all();
+
+        return NAME_PLACEHOLDER::all();
+
     }
 }

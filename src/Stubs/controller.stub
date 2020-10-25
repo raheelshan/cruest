@@ -2,18 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PhotoController extends Controller
+use App\Http\Requests\NAME_PLACEHOLDER\GetAllNAMES_PLACEHOLDERRequest;
+use App\Http\Requests\NAME_PLACEHOLDER\GetNAME_PLACEHOLDERRequest;
+use App\Http\Requests\NAME_PLACEHOLDER\CreateNAME_PLACEHOLDERRequest;
+use App\Http\Requests\NAME_PLACEHOLDER\UpdateNAME_PLACEHOLDERRequest;
+use App\Http\Requests\NAME_PLACEHOLDER\DeleteNAME_PLACEHOLDERRequest;
+
+class NAME_PLACEHOLDERController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(GetAllNAMES_PLACEHOLDERRequest $request)
     {
-        //
+        $response = $request->handle();
+
+        if(\Request::wantsJson()) { 
+            return response()->json($response);
+        } else {
+            return view('MODEL.index',$response);
+        }  
     }
 
     /**
@@ -21,9 +34,17 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(GetNAME_PLACEHOLDERRequest $request)
     {
-        //
+        $request->id = 0;
+
+        $response = $request->handle();
+
+        if(\Request::wantsJson()) { 
+            return response()->json($response);
+        } else {
+            return view('MODEL.form', ['MODEL' => $response, 'route' => route('MODELS.store'), 'edit' => false ] );
+        }        
     }
 
     /**
@@ -32,20 +53,15 @@ class PhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateNAME_PLACEHOLDERRequest $request)
     {
-        //
-    }
+        $response = $request->handle();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        if(\Request::wantsJson()) { 
+            return response()->json($response);
+        } else {
+            return redirect()->route('MODELS.index');
+        }
     }
 
     /**
@@ -54,9 +70,17 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,GetNAME_PLACEHOLDERRequest $request)
     {
-        //
+        $request->id = $id;
+
+        $response = $request->handle();
+
+        if(\Request::wantsJson()) { 
+            return response()->json($response);
+        } else {
+            return view('MODEL.form', ['MODEL' => $response, 'route' => route('MODELS.update',['id' => $request->id ]), 'edit' => true ] );
+        }        
     }
 
     /**
@@ -66,9 +90,17 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateNAME_PLACEHOLDERRequest $request, $id)
     {
-        //
+        $request->id = $id;
+        
+        $response = $request->handle();
+
+        if(\Request::wantsJson()) { 
+            return response()->json($response);
+        } else {
+            return redirect()->route('MODELS.index');
+        }
     }
 
     /**
@@ -77,8 +109,16 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,DeleteRoleRequest $request)
     {
-        //
-    }
+        $request->id = $id;
+
+        $response = $request->handle();
+
+        if(\Request::wantsJson()) { 
+            return response()->json($response);
+        } else {
+            return redirect()->route('MODELS.index');
+        }
+    }  
 }

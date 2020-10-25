@@ -1,0 +1,1 @@
+Route::resource('MODELS', App\Http\Controllers\NAME_PLACEHOLDERController::class);

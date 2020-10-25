@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\NAME_PLACEHOLDER;
 
-use App\Models\Category;
+use App\Models\NAME_PLACEHOLDER;
 use App\Http\Requests\BaseRequest;
 use Bouncer;
 
-class UpdateCategoryRequest extends BaseRequest
+class GetNAME_PLACEHOLDERRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class UpdateCategoryRequest extends BaseRequest
      */
     public function authorize()
     {
-        return Bouncer::can('update-category');
+        return Bouncer::can('view-MODEL');
     }
 
     /**
@@ -26,14 +26,13 @@ class UpdateCategoryRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name' => 'required|string'
+
         ];
     }
 
     public function handle(){
 
-        $data = $this->validated();
-
-        return Category::where('id', $this->id)->update($this->all());
-    }    
+        return NAME_PLACEHOLDER::findOrNew($this->id);
+        
+    }
 }

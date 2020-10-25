@@ -23,7 +23,7 @@ class CruestGeneratorServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('command.raheelshan.cruest', function ($app) {
-            return $app['Raheelshan\Cruest\Commands\ResourceMakeCommand'];
+            return $app['Raheelshan\Cruest\Commands\CruestCommand'];
         });
         $this->commands('command.raheelshan.cruest');
 

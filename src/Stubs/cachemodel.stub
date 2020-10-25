@@ -1,0 +1,8 @@
+<?php
+
+namespace App\Models;
+
+class NAME_PLACEHOLDER extends BaseModel
+{
+    
+}
